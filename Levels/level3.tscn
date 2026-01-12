@@ -51,21 +51,27 @@ size = Vector3(1.9261086, 38.707302, 10.354736)
 material = SubResource("StandardMaterial3D_2385j")
 
 [node name="Floor5" type="CSGBox3D" parent="." groups=["terrain"]]
-transform = Transform3D(-0.79137295, -0.6113337, 0, 0.6113337, -0.79137295, 0, 0, 0, 1, -4.332648, 6.9648423, 0.7121582)
+transform = Transform3D(-0.8177481, -0.5755763, 0, 0.5755763, -0.8177481, 0, 0, 0, 1, -6.0240226, 7.3798475, -0.36224365)
 use_collision = true
-size = Vector3(1.9261086, 22.26686, 10.354736)
+size = Vector3(3.2993982, 23.607552, 6.428833)
 material = SubResource("StandardMaterial3D_2385j")
 
 [node name="Floor7" type="CSGBox3D" parent="." groups=["terrain"]]
-transform = Transform3D(-0.79137295, -0.6113337, 0, 0.6113337, -0.79137295, 0, 0, 0, 1, 17.674355, 3.7697282, 0.7121582)
+transform = Transform3D(-0.632854, -0.77427125, 0, 0.77427125, -0.632854, 0, 0, 0, 1, 15.446602, 4.0696397, -0.4083252)
 use_collision = true
 size = Vector3(1.9261086, 22.26686, 10.354736)
 material = SubResource("StandardMaterial3D_2385j")
 
 [node name="Floor6" type="CSGBox3D" parent="." groups=["terrain"]]
-transform = Transform3D(0.783162, 0.6218178, 0, -0.6218178, 0.783162, 0, 0, 0, 1, 12.268362, 12.721861, 0.5858154)
+transform = Transform3D(0.84827006, 0.529564, 0, -0.529564, 0.84827006, 0, 0, 0, 1, 8.014019, 13.045688, 0.609375)
 use_collision = true
-size = Vector3(1.9261086, 18.217415, 10.354736)
+size = Vector3(1.9261086, 17.913612, 10.354736)
+material = SubResource("StandardMaterial3D_2385j")
+
+[node name="Floor8" type="CSGBox3D" parent="." groups=["terrain"]]
+transform = Transform3D(0.49996978, 0.8660429, 0, -0.8660429, 0.49996978, 0, 0, 0, 1, 11.78572, 11.550651, 0.609375)
+use_collision = true
+size = Vector3(1.9261086, 21.351938, 10.354736)
 material = SubResource("StandardMaterial3D_2385j")
 
 [node name="Floor3" type="CSGBox3D" parent="." groups=["terrain"]]
@@ -81,7 +87,7 @@ size = Vector3(1.9261086, 27.176405, 10.354736)
 material = SubResource("StandardMaterial3D_2385j")
 
 [node name="LandingPad" type="CSGBox3D" parent="." groups=["goal"]]
-transform = Transform3D(-0.13782477, -0.99045634, 0, 0.99045646, -0.13782483, 0, 0, 0, 0.99999976, 21.503128, 13.757175, -0.031)
+transform = Transform3D(-0.13782477, -0.99045634, 0, 0.99045646, -0.13782483, 0, 0, 0, 0.99999976, 21.503128, 13.215229, -0.031)
 use_collision = true
 size = Vector3(4.8463135, 0.3753662, 4.9262695)
 material = SubResource("StandardMaterial3D_wav5q")
