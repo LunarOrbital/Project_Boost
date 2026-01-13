@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnwginp6mmu2m"]
+[gd_scene load_steps=11 format=3 uid="uid://psv3dgixwlwt"]
 
-[ext_resource type="Script" uid="uid://gli40wmvb504" path="res://Levels/landing_pad.gd" id="1_j8lx3"]
-[ext_resource type="PackedScene" uid="uid://b4ebypukt371f" path="res://Player/player.tscn" id="2_m7syx"]
-[ext_resource type="PackedScene" uid="uid://c7vphr0r6unpa" path="res://Levels/moving_obstacle.tscn" id="3_m7syx"]
+[ext_resource type="Script" uid="uid://gli40wmvb504" path="res://Levels/landing_pad.gd" id="1_jy6j6"]
+[ext_resource type="PackedScene" uid="uid://b4ebypukt371f" path="res://Player/player.tscn" id="2_bbmyx"]
+[ext_resource type="PackedScene" uid="uid://c7vphr0r6unpa" path="res://Levels/moving_obstacle.tscn" id="3_ev673"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54b6e"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -68,8 +68,8 @@ transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 17, 0.236, 
 use_collision = true
 size = Vector3(4.8463135, 0.62475586, 4.9262695)
 material = SubResource("StandardMaterial3D_wav5q")
-script = ExtResource("1_j8lx3")
-file_path = "uid://psv3dgixwlwt"
+script = ExtResource("1_jy6j6")
+file_path = "uid://c41qqpgk3iuau"
 
 [node name="LaunchPad" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0.238, -0.031)
@@ -80,10 +80,20 @@ material = SubResource("StandardMaterial3D_xto7t")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3909197, 15.381803)
 
-[node name="Player" parent="." instance=ExtResource("2_m7syx")]
+[node name="Player" parent="." instance=ExtResource("2_bbmyx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.98594, 2.5681763, -0.031000001)
 max_contacts_reported = 2000
 
-[node name="MovingObstacle3" parent="." instance=ExtResource("3_m7syx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5148239, 5.676651, 0)
+[node name="MovingObstacle" parent="." instance=ExtResource("3_ev673")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5446777, 0)
+destination = Vector3(0, 9, 0)
+duration = 0.8
+
+[node name="MovingObstacle3" parent="." instance=ExtResource("3_ev673")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8133087, 5.5446777, 0)
+destination = Vector3(0, 9, 0)
+duration = 1.1
+
+[node name="MovingObstacle2" parent="." instance=ExtResource("3_ev673")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.609741, 5.5446777, 0)
 destination = Vector3(0, 9, 0)

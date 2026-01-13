@@ -7,6 +7,11 @@ var trans := false
 @onready var success_audio: AudioStreamPlayer = $SuccessAudio
 @onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
 @onready var main_thrust: AudioStreamPlayer = $MainThrust
+@onready var main_particles: GPUParticles3D = $MainParticles
+@onready var right_booster: GPUParticles3D = $RightBooster
+@onready var left_booster: GPUParticles3D = $LeftBooster
+@onready var explosion_particles: GPUParticles3D = $ExplosionParticles
+@onready var success_particles: GPUParticles3D = $SuccessParticles
 
 
 func _ready() -> void:
@@ -17,17 +22,25 @@ func _process(delta: float) -> void:
 		if (Input.is_action_pressed("boost")):
 			apply_central_force(basis.y * delta * engineForce)
 			if !(main_thrust.is_playing()):
+				main_particles.emitting = true
 				main_thrust.play()
-			else:
-				main_thrust.stop()
+		else:
+			main_particles.emitting = false
+			main_thrust.stop()
 		if (Input.is_action_pressed("r_left")):
 			apply_torque(Vector3(0,0,delta * SASens))
+			apply_central_force(basis.y * delta * engineForce/10)
+			right_booster.emitting = true
+		else:
+			right_booster.emitting = false
 		if (Input.is_action_pressed("r_right")):
 			apply_torque(Vector3(0,0,-delta * SASens))
-
-
+			apply_central_force(basis.y * delta * engineForce/10)
+			left_booster.emitting = true
+		else:
+			left_booster.emitting = false
+			
 func _on_body_entered(body: Node) -> void:
-	print(body)
 	if !trans:
 		if "goal" in body.get_groups():
 			if body.file_path:
@@ -38,12 +51,18 @@ func _on_body_entered(body: Node) -> void:
 			_crash_sequence()
 
 func _crash_sequence() -> void:
-	trans = trans
+	explosion_audio.play()
+	explosion_particles.emitting = true
+	trans = true
 	await get_tree().create_timer(1).timeout
 	print("yes Rico, Kaboom.")
 	get_tree().reload_current_scene.call_deferred()
-	explosion_audio.play()
+	main_particles.emitting = false
+	main_thrust.stop()
 func _complete_level(next_level_file) -> void:
+	main_particles.emitting = false
+	success_particles.emitting = true
+	main_thrust.stop()
 	success_audio.play()
 	trans = true
 	print("u winned")
