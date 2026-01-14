@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctoyiaswpjje4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xgho"]
+albedo_color = Color(0.4004494, 0.3267813, 0.15721571, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54b6e"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_s41d2"]
+sky_material = SubResource("ProceduralSkyMaterial_54b6e")
+
+[sub_resource type="Environment" id="Environment_gtnvv"]
+background_mode = 1
+background_color = Color(0.16, 0.13226667, 0.0768, 1)
+sky = SubResource("Sky_s41d2")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Floor" type="CSGBox3D" groups=["terrain"]]
+use_collision = true
+size = Vector3(51.569458, 8, 5)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="Wall" type="CSGBox3D" parent="."]
+transform = Transform3D(0.91993296, 0.35895735, -0.15771206, -0.3625566, 0.9319404, 0.0063349362, 0.14925219, 0.051351853, 0.987465, -23.544863, 11.523016, 0.10788625)
+size = Vector3(10, 28.203003, 5)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="Wall2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.9407127, -0.31501278, -0.12580393, 0.30460373, 0.9476972, -0.09532363, 0.14925219, 0.05135185, 0.987465, 24.371698, 11.523016, 0.10788625)
+size = Vector3(10, 28.203003, 5)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="Wall3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.927152, 0.37424845, -0.018098548, -0.37422258, 0.92732596, 0.004929014, 0.018627971, 0.0022030175, 0.9998243, -13.02438, 11.52914, -5.453858)
+size = Vector3(10, 28.203003, 7.4852295)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="Wall7" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.20166358, 0.9790033, -0.029744709, -0.9632516, -0.19273472, 0.18708244, 0.17742136, 0.066379406, 0.9818941, -6.578863, 6.718832, -8.736108)
+size = Vector3(10, 28.203003, 5)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="Wall5" type="CSGBox3D" parent="."]
+transform = Transform3D(0.94352734, -0.29511732, -0.15053791, 0.2797812, 0.9531524, -0.11499091, 0.17742135, 0.06637941, 0.98189396, 13.003955, 9.280419, -4.32434)
+size = Vector3(11.697388, 28.929596, 5)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="Wall4" type="CSGBox3D" parent="."]
+transform = Transform3D(0.98708165, -0.15549758, 0.038607597, 0.1580393, 0.9845737, -0.075088605, -0.02633594, 0.08022016, 0.9964295, 0.29583168, 12.979559, -6.6244135)
+size = Vector3(10, 28.203003, 5)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="Ceiling" type="CSGBox3D" parent="."]
+transform = Transform3D(0.0094397925, -0.99867916, 0.05050819, 0.9887542, 0.0017829492, -0.14953981, 0.14925224, 0.051351875, 0.9874654, 1.1998813, 23.734034, -0.25643414)
+size = Vector3(7.9833984, 48.253357, 5)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gtnvv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9339677, 0.2572737, 0.24802148, -0.34537062, 0.47158998, 0.81137055, 0.09177986, -0.84345317, 0.52930456, -1.5801754, 30.029915, 46.978516)
+light_energy = 1.325
+shadow_enabled = true
+shadow_bias = 0.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.825317, 16.272827, 3.99045)
+light_energy = 100.0
+light_indirect_energy = 16.0
+omni_range = 65.605
+omni_attenuation = 2.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.741364, 16.272827, 3.99045)
+light_energy = 100.0
+light_indirect_energy = 16.0
+omni_range = 65.605
+omni_attenuation = 2.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4928589, 16.272827, 3.99045)
+light_energy = 100.0
+light_indirect_energy = 16.0
+omni_range = 65.605
+omni_attenuation = 2.0

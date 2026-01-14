@@ -1,5 +1,6 @@
 extends RigidBody3D
 class_name Player
+var startFuel := 100
 @onready var player: Node3D = $"."
 @export_range(750, 2500) var engineForce := 1400.0
 @export var SASens := 500.0
@@ -12,15 +13,21 @@ var trans := false
 @onready var left_booster: GPUParticles3D = $LeftBooster
 @onready var explosion_particles: GPUParticles3D = $ExplosionParticles
 @onready var success_particles: GPUParticles3D = $SuccessParticles
-
-
+#
+var ui : CanvasLayer 
+@export var fuel : float : 
+	set(new_fuel):
+		fuel = new_fuel
+		ui.updateFuel(new_fuel)
 func _ready() -> void:
-	print("ahh")
+	ui = get_tree().get_first_node_in_group("UI")
+	fuel = startFuel
 
 func _process(delta: float) -> void:
 	if !trans:
-		if (Input.is_action_pressed("boost")):
-			apply_central_force(basis.y * delta * engineForce)
+		if (Input.is_action_pressed("boost") && fuel>0):
+			apply_central_force(basis.y * delta * engineForce*1.2)
+			fuel -=.1
 			if !(main_thrust.is_playing()):
 				main_particles.emitting = true
 				main_thrust.play()
@@ -29,14 +36,16 @@ func _process(delta: float) -> void:
 			main_thrust.stop()
 		if (Input.is_action_pressed("r_left")):
 			apply_torque(Vector3(0,0,delta * SASens))
-			apply_central_force(basis.y * delta * engineForce/10)
+			apply_central_force(basis.y * delta * engineForce/5)
 			right_booster.emitting = true
+			fuel -=.05
 		else:
 			right_booster.emitting = false
 		if (Input.is_action_pressed("r_right")):
 			apply_torque(Vector3(0,0,-delta * SASens))
-			apply_central_force(basis.y * delta * engineForce/10)
+			apply_central_force(basis.y * delta * engineForce/5)
 			left_booster.emitting = true
+			fuel -=.05
 		else:
 			left_booster.emitting = false
 			
