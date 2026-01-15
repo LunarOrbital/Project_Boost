@@ -27,21 +27,21 @@ func _process(delta: float) -> void:
 	if !trans:
 		if (Input.is_action_pressed("boost") && fuel>0):
 			apply_central_force(basis.y * delta * engineForce*1.2)
-			fuel -=.1
+			fuel -=.2
 			if !(main_thrust.is_playing()):
 				main_particles.emitting = true
 				main_thrust.play()
 		else:
 			main_particles.emitting = false
 			main_thrust.stop()
-		if (Input.is_action_pressed("r_left")):
+		if (Input.is_action_pressed("r_left")&& fuel>0):
 			apply_torque(Vector3(0,0,delta * SASens))
 			apply_central_force(basis.y * delta * engineForce/5)
 			right_booster.emitting = true
 			fuel -=.05
 		else:
 			right_booster.emitting = false
-		if (Input.is_action_pressed("r_right")):
+		if (Input.is_action_pressed("r_right")&& fuel>0):
 			apply_torque(Vector3(0,0,-delta * SASens))
 			apply_central_force(basis.y * delta * engineForce/5)
 			left_booster.emitting = true
